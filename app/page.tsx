@@ -26,8 +26,9 @@ export default function LuxuryCruiseSite() {
 
   const images = [
     '/bahamas.jpg',
+    '/food.jpg',
     '/puntacana.jpg',
-    '/santorini.jpg'
+    '/art.jpg',
   ];
 
   useEffect(() => {
@@ -42,9 +43,9 @@ export default function LuxuryCruiseSite() {
     <>
       {/* Navigation */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 w-full z-40 transition-all duration-500 ${
           isNavbarSolid
-            ? "bg-expery-blue backdrop-blur-md border-b border-sky-200/20 shadow-lg"
+            ? "bg-stone-50 backdrop-blur-md border-b border-sky-200/20 shadow-lg"
             : "bg-transparent"
         }`}
       >
@@ -52,32 +53,29 @@ export default function LuxuryCruiseSite() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Image
-                src="/logo.png"
+                src="/logos/expery_original.png"
                 alt="Expery Travel Logo"
-                className="rounded-full mx-2"
-                width={40}
-                height={40}
+                className="rounded mx-2"
+                width={120}
+                height={80}
               />
-              <span className="text-2xl font-bold text-white">
-                Expery Travel
-              </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#cruises"
-                className="text-white hover:text-expery-iron transition-colors"
+                className="text-expery-head hover:text-expery-regent transition-colors"
               >
                 Cruseros
               </a>
               <a
                 href="#services"
-                className="text-white hover:text-expery-iron transition-colors"
+                className="text-expery-head hover:text-expery-regent transition-colors"
               >
                 Servicios
               </a>
               <a
                 href="#contact"
-                className="text-white hover:text-expery-iron transition-colors"
+                className="text-expery-head hover:text-expery-regent transition-colors"
               >
                 Contacto
               </a>
@@ -101,7 +99,7 @@ export default function LuxuryCruiseSite() {
               alt={`Slide ${index + 1}`}
               fill
               className={`absolute inset-0 object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-90' : 'opacity-0'
+                index === currentImageIndex ? 'opacity-80' : 'opacity-0'
               }`}
               priority={index === 0}
             />
@@ -111,9 +109,9 @@ export default function LuxuryCruiseSite() {
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <div className="max-w-4xl mx-auto">
             <div className="animate-fade-in-up">
-              <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
                 Vive Experiencias Inigualables
-                {/* <span className="block text-expery-head">Inigualables</span> */}
+                {/* Expertos en experiencias, generando cultura a través de los destinos mundiales. */}
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

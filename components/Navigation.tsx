@@ -12,9 +12,9 @@ function Navigation(isNavbarSolid) {
             <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
                 <Image
-                    src="/logo.png"
+                    src="/expery_row.png"
                     alt="Expery Travel Logo"
-                    className="rounded-full"
+                    className="rounded"
                     width={10}
                     height={10}
                 />
