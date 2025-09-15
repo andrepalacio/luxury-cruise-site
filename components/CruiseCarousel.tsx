@@ -6,12 +6,11 @@ import { Autoplay } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { useHoverSupport } from "@/hooks/use-hover-support";
 
 import "swiper/css";
 
 type ICruiseDetails = {
-  rating: number;
-  duration: string;
   destination: string;
   highlights: string[];
 };
@@ -27,35 +26,40 @@ const cruises = [
   {
     name: "Norwegian Cruise Line",
     cruiseDetails: {
-      rating: 4.8,
-      duration: "10 days",
       destination: "Caribbean",
       highlights: ["Luxury Dining", "Spa", "Indoor Pool"],
     },
     primaryImage: "/cruises/norwegian/encore.jpg",
-    hoverImages: ["/cruises/norwegian/room.webp", "/cruises/norwegian/pool.webp"],
+    hoverImages: [
+      "/cruises/norwegian/room.webp",
+      "/cruises/norwegian/pool.webp",
+    ],
   },
   {
     name: "Oceania Cruises",
     cruiseDetails: {
-      rating: 4.8,
-      duration: "7 days",
       destination: "America",
       highlights: ["Exclusive Dining", "Suites", "Luxury Resturants"],
     },
     primaryImage: "/cruises/oceania/riviera.jpg",
-    hoverImages: ["/cruises/oceania/room.avif", "/cruises/oceania/restaurant.avif", "/cruises/oceania/pool.avif"],
+    hoverImages: [
+      "/cruises/oceania/room.avif",
+      "/cruises/oceania/restaurant.avif",
+      "/cruises/oceania/pool.avif",
+    ],
   },
   {
     name: "Regent Seven Seas Cruises",
     cruiseDetails: {
-      rating: 4.9,
-      duration: "10 days",
       destination: "Mediterranean",
       highlights: ["Luxury service", "Spa", "Cultural Plays"],
     },
     primaryImage: "/cruises/regent/cruise.jpg",
-    hoverImages: ["/cruises/regent/lobby.jpg", "/cruises/regent/restaurant.avif", "/cruises/regent/spa.jpg"],
+    hoverImages: [
+      "/cruises/regent/lobby.jpg",
+      "/cruises/regent/restaurant.avif",
+      "/cruises/regent/spa.jpg",
+    ],
   },
 ];
 
@@ -67,10 +71,13 @@ export default function CruiseCarousel() {
         slidesPerView={1}
         loop
         autoplay={{
-          delay: 5000,
+          delay: 8000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
+        // Configure touch behavior to prevent conflicts
+        touchStartPreventDefault={false}
+        passiveListeners={false}
         className="w-full h-full"
       >
         {cruises.map((cruise, index) => (
@@ -83,36 +90,87 @@ export default function CruiseCarousel() {
   );
 }
 
-function CruiseCard({ name, primaryImage, hoverImages, cruiseDetails }: ICruiseCardProps) {
+function CruiseCard({
+  name,
+  primaryImage,
+  hoverImages,
+  cruiseDetails,
+}: ICruiseCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(0);
   const [currentImage, setCurrentImage] = useState(primaryImage);
+  const supportsHover = useHoverSupport();
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval> | undefined;
 
     if (isHovered && hoverImages?.length > 0) {
-      setCurrentImage(hoverImages[0]); // Start with the first hover image
+      setCurrentImage(hoverImages[0]);
       interval = setInterval(() => {
         setHoverIndex((prev) => {
           const next = (prev + 1) % hoverImages.length;
           setCurrentImage(hoverImages[next]);
           return next;
         });
-      }, 2500);
+      }, 2000);
     } else {
       setCurrentImage(primaryImage);
       setHoverIndex(0);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, [isHovered, hoverImages, primaryImage]);
+
+  // Mobile tap handler
+  const handleMobileInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!supportsHover) {
+      e.stopPropagation(); // Remove preventDefault to avoid passive listener error
+      // console.log("Mobile tap - toggling gallery"); // Debug log
+      setIsHovered((prev) => {
+        // console.log("Gallery state changing from", prev, "to", !prev);
+        return !prev;
+      });
+    }
+  };
+
+  // Auto-hide on mobile after 8 seconds (with delay to prevent immediate hiding)
+  useEffect(() => {
+    if (!supportsHover && isHovered) {
+      // Add a longer delay to ensure gallery has time to show
+      const timeout = setTimeout(() => {
+        setIsHovered(false);
+      }, 8000); // Increased to 8 seconds
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [isHovered, supportsHover]);
 
   return (
     <div
       className="relative w-full h-full overflow-hidden rounded-2xl shadow-lg group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      // Desktop hover events (only if device supports hover)
+      {...(supportsHover && {
+        onMouseEnter: () => {
+          console.log("Desktop mouse enter");
+          setIsHovered(true);
+        },
+        onMouseLeave: () => {
+          console.log("Desktop mouse leave");
+          setIsHovered(false);
+        },
+      })}
+      // Mobile touch/click events (only if device doesn't support hover)
+      {...(!supportsHover && {
+        onClick: handleMobileInteraction,
+        // Remove onTouchStart to prevent double triggering
+        style: { cursor: "pointer" },
+      })}
     >
       <AnimatePresence>
         <motion.div
@@ -134,23 +192,21 @@ function CruiseCard({ name, primaryImage, hoverImages, cruiseDetails }: ICruiseC
         </motion.div>
       </AnimatePresence>
 
+      {/* Gallery active indicator */}
+      {isHovered && (
+        <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded text-xs z-20">
+          Galería Activa
+        </div>
+      )}
+
       {/* Cruise Information Overlay */}
       <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-blue-950/90 to-transparent">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-4 mb-4">
-            <Badge className="bg-slate-100 hover:bg-slate-300 text-expery-head font-semibold px-3 py-1">
-              {cruiseDetails.duration}
-            </Badge>
-            <span className="text-expery-head text-md font-bold">
-              {cruiseDetails.destination}
-            </span>
-          </div>
-
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {name}
           </h3>
 
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2">
             {cruiseDetails.highlights.map((highlight, idx) => (
               <span
                 key={idx}
@@ -160,6 +216,14 @@ function CruiseCard({ name, primaryImage, hoverImages, cruiseDetails }: ICruiseC
               </span>
             ))}
           </div>
+
+          {/* Mobile instruction
+          {!supportsHover && (
+            <div className="flex items-center gap-2 text-white/80 text-sm mb-2">
+              <span>👆</span>
+              <span>Oprime para ver la galería</span>
+            </div>
+          )} */}
         </div>
       </div>
     </div>

@@ -1,0 +1,73 @@
+/* Mobile-first hover alternatives */
+
+/* Default state for all devices */
+.hover-alternative {
+  transition: all 0.3s ease;
+}
+
+/* Desktop with hover support */
+@media (hover: hover) and (pointer: fine) {
+  .hover-alternative:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Touch devices - use active state */
+@media (hover: none) {
+  .hover-alternative:active {
+    transform: scale(0.98);
+  }
+  
+  /* Add visual feedback for interactive elements */
+  .hover-alternative::after {
+    content: "👆 Tap to interact";
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0;
+    animation: fadeInOut 3s infinite;
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 70%, 100% { opacity: 0; }
+  10%, 60% { opacity: 1; }
+}
+
+/* Utility classes for different hover behaviors */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) {
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (hover: none) {
+  .hover-scale:active {
+    transform: scale(0.95);
+  }
+}
+
+.hover-brightness {
+  transition: filter 0.3s ease;
+}
+
+@media (hover: hover) {
+  .hover-brightness:hover {
+    filter: brightness(1.1);
+  }
+}
+
+@media (hover: none) {
+  .hover-brightness:active {
+    filter: brightness(0.9);
+  }
+}

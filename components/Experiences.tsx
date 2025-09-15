@@ -11,12 +11,12 @@ export default function Experiences() {
     {
       title: "Destinos mágicos",
       description: "Disfruta de experiencias únicas en destinos inigualables",
-      image: "/thailand.jpg",
+      image: "/magicland.jpeg",
     },
     {
       title: "Turismo corporativo",
       description: "Permítenos diseñar tus experiencias corporativas con lujo de detalles",
-      image: "/corporate.jpg",
+      image: "/corporate.jpeg",
     },
   ];
 

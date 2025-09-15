@@ -34,10 +34,10 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-expery-head mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-expery-head mb-6 text-center lg:text-left">
               Inicia tu viaje
             </h2>
-            <p className="text-xl text-black mb-8">
+            <p className="text-xl text-black mb-8 text-center lg:text-left">
               Somos embajadores del detalle, nos apasiona la atención y el buen
               servicio a cada instante, nos dirigimos a empresarios, directivos,
               gerentes o personas con un gusto increíble del lujo en cada
@@ -50,9 +50,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">
-                    +1 (555) 123-CRUISE
+                    +57 312 2802986
                   </p>
-                  <p className="text-black">Available 24/7</p>
+                  <p className="text-gray-600 font-semibold">
+                    +57 313 5828640
+                  </p>
+                  <p className="text-black">Disponible 24/7</p>
                 </div>
               </div>
 
@@ -62,9 +65,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">
-                    concierge@oceania-elite.com
+                    contactanos@experytravel.com
                   </p>
-                  <p className="text-black">Luxury Travel Specialists</p>
+                  <p className="text-black">Contacto Expery Travel</p>
                 </div>
               </div>
 
@@ -74,9 +77,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">
-                    Miami Beach, Florida
+                    Calle 25 #6-66, Pereira, Risaralda, Colombia
                   </p>
-                  <p className="text-black">Headquarters & Marina</p>
+                  <p className="text-black">Oficinas</p>
                 </div>
               </div>
             </div>

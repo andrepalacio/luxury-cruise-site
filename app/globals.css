@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import mobile hover alternatives */
+@import '../styles/mobile-hover.css';
+
 @layer base {
   :root {
     --background: 0 0% 100%;

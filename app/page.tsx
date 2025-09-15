@@ -25,10 +25,10 @@ export default function LuxuryCruiseSite() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
-    '/bahamas.jpg',
-    '/food.jpg',
-    '/puntacana.jpg',
-    '/art.jpg',
+    '/beach.jpeg',
+    '/food.jpeg',
+    '/turkey.jpeg',
+    '/art.jpeg',
   ];
 
   useEffect(() => {

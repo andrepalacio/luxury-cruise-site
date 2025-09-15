@@ -13,9 +13,9 @@ export default function Footer() {
             width={120}
             height={80}
           />
-          <div className="text-gray-800 text-center md:text-right w-9/12 flex justify-between">
+          <div className="text-gray-800 text-center mt-6 md:mt-0 w-5/6 md:w-9/12 md:flex md:justify-between">
             <p>Impactando positivamente el turismo y la sociedad</p>
-            <p className="text-sm">&copy; 2025 Expery Travel. Todos los derechos reservados.</p>
+            <p className="text-sm mt-4 md:mt-0">&copy; 2025 Expery Travel. Todos los derechos reservados.</p>
           </div>
         </div>
       </div>
