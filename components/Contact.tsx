@@ -64,10 +64,7 @@ export default function Contact() {
               Inicia tu viaje
             </h2>
             <p className="text-xl text-black mb-8 text-center lg:text-left">
-              Somos embajadores del detalle, nos apasiona la atención y el buen
-              servicio a cada instante, nos dirigimos a empresarios, directivos,
-              gerentes o personas con un gusto increíble del lujo en cada
-              estancia.
+              En ExperyTravel creemos que el verdadero lujo reside en la intención, la precisión y el servicio personalizado. Nos dirigimos a personas que buscan no solo viajes, sino experiencias hechas a su medida.
             </p>
             <div className="space-y-6">
               <div className="flex items-center">

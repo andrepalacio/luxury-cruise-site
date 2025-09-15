@@ -10,25 +10,17 @@ import { useHoverSupport } from "@/hooks/use-hover-support";
 
 import "swiper/css";
 
-type ICruiseDetails = {
-  destination: string;
-  highlights: string[];
-};
-
 type ICruiseCardProps = {
   name: string;
+  details: string;
   primaryImage: string;
   hoverImages: Array<string>;
-  cruiseDetails: ICruiseDetails;
 };
 
 const cruises = [
   {
     name: "Norwegian Cruise Line",
-    cruiseDetails: {
-      destination: "Caribbean",
-      highlights: ["Luxury Dining", "Spa", "Indoor Pool"],
-    },
+    details: "Un santuario de comodidad contemporánea: suites, servicio The Haven con mayordomo 24 horas, lounges privados, gastronomía refinada y espacios exclusivos con vistas panorámicas",
     primaryImage: "/cruises/norwegian/cruise.jpeg",
     hoverImages: [
       "/cruises/norwegian/room.webp",
@@ -37,10 +29,7 @@ const cruises = [
   },
   {
     name: "Oceania Cruises",
-    cruiseDetails: {
-      destination: "America",
-      highlights: ["Exclusive Dining", "Suites", "Luxury Resturants"],
-    },
+    details: "Estilo residencial y sofisticación en cada detalle: suites amplias con varanda privada, servicio de mayordomo, cenas especializadas, amenidades de lujo y un ambiente íntimo que respira distinción",
     primaryImage: "/cruises/oceania/cruise.jpeg",
     hoverImages: [
       "/cruises/oceania/room.avif",
@@ -50,10 +39,7 @@ const cruises = [
   },
   {
     name: "Regent Seven Seas Cruises",
-    cruiseDetails: {
-      destination: "Mediterranean",
-      highlights: ["Luxury service", "Spa", "Cultural Plays"],
-    },
+    details: "Ultra lujo todo incluido que marca diferencia: suites majestuosas con vistas al mar, gastronomía gourmet sin cargos adicionales, experiencias terrestres ilimitadas, spa de ensueño y atención personalizada que supera expectativas",
     primaryImage: "/cruises/regent/cruise.jpeg",
     hoverImages: [
       "/cruises/regent/lobby.jpg",
@@ -92,9 +78,9 @@ export default function CruiseCarousel() {
 
 function CruiseCard({
   name,
+  details,
   primaryImage,
   hoverImages,
-  cruiseDetails,
 }: ICruiseCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(0);
@@ -135,10 +121,8 @@ function CruiseCard({
     }
   };
 
-  // Auto-hide on mobile after 7.5 seconds (with delay to prevent immediate hiding)
   useEffect(() => {
     if (!supportsHover && isHovered) {
-      // Add a longer delay to ensure gallery has time to show
       const timeout = setTimeout(() => {
         setIsHovered(false);
       }, 7500);
@@ -155,18 +139,15 @@ function CruiseCard({
       // Desktop hover events (only if device supports hover)
       {...(supportsHover && {
         onMouseEnter: () => {
-          console.log("Desktop mouse enter");
           setIsHovered(true);
         },
         onMouseLeave: () => {
-          console.log("Desktop mouse leave");
           setIsHovered(false);
         },
       })}
       // Mobile touch/click events (only if device doesn't support hover)
       {...(!supportsHover && {
         onClick: handleMobileInteraction,
-        // Remove onTouchStart to prevent double triggering
         style: { cursor: "pointer" },
       })}
     >
@@ -198,22 +179,12 @@ function CruiseCard({
       )}
 
       {/* Cruise Information Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-blue-950/90 to-transparent">
-        <div className="max-w-2xl">
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+      <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-blue-950/90 to-transparent">
+        <div className="max-w-[85%]">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {name}
           </h3>
-
-          <div className="flex flex-wrap gap-2">
-            {cruiseDetails.highlights.map((highlight, idx) => (
-              <span
-                key={idx}
-                className="px-3 py-1 bg-slate-200 text-expery-head text-sm rounded-full border border-expery-blue/80"
-              >
-                {highlight}
-              </span>
-            ))}
-          </div>
+          <p className="text-white">{details}</p>
 
           {/* Mobile instruction
           {!supportsHover && (

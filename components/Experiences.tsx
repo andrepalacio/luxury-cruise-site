@@ -5,17 +5,17 @@ export default function Experiences() {
   const services = [
     {
       title: "Turismo cultural",
-      description: "Descubre nuevos sabores, paisajes y culturas del mundo",
+      description: "Sumérjase en culturas milenarias, descubra sabores auténticos y paisajes que evocan historias",
       image: "/cultural.jpg",
     },
     {
       title: "Destinos mágicos",
-      description: "Disfruta de experiencias únicas en destinos inigualables",
+      description: "Visite destinos emblemáticos y refugios escondidos, cada viaje será una colección de momentos sublimes",
       image: "/magicland.jpeg",
     },
     {
       title: "Turismo corporativo",
-      description: "Permítenos diseñar tus experiencias corporativas con lujo de detalles",
+      description: "Organizamos servicios corporativos con clase: viajes de negocio, incentivos y reuniones de alto nivel",
       image: "/corporate.jpeg",
     },
   ];
@@ -39,17 +39,6 @@ export default function Experiences() {
               <p className="text-gray-200 text-sm">{service.description}</p>
             </div>
           </div>
-          {/* <div className="flex items-center justify-between">
-            <span className="text-sky-400 font-semibold">
-            {service.price}
-            </span>
-            <Button
-            variant="outline"
-            className="border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-blue-900 bg-transparent"
-            >
-            Learn More
-            </Button>
-        </div> */}
         </div>
       ))}
     </div>

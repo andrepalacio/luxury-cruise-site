@@ -110,8 +110,7 @@ export default function LuxuryCruiseSite() {
           <div className="max-w-4xl mx-auto">
             <div className="animate-fade-in-up">
               <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                Vive Experiencias Inigualables
-                {/* Expertos en experiencias, generando cultura a través de los destinos mundiales. */}
+                Cultura y Arte al Viajar
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -158,8 +157,7 @@ export default function LuxuryCruiseSite() {
               Cruceros
             </h2>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-              Cada viaje está meticulosamente diseñado para ofrecer algo incomparable
-              lujo, servicio excepcional y experiencias inolvidables
+              Cada viaje es diseñado con precisión para ofrecer lo extraordinario: lujo, servicio excepcional y experiencias mágicas
             </p>
           </div>
 
@@ -175,8 +173,7 @@ export default function LuxuryCruiseSite() {
               Experiencias
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Descubre nuestros servicios corporativos y personalizados
-              a la medida de los viajeros más exigentes
+              Brindamos experiencias diseñadas con elegancia, exclusividad y una minuciosa atención al detalle, para quienes viven el viaje como parte de su legado
             </p>
           </div>
 
