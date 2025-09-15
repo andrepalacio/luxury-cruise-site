@@ -25,33 +25,57 @@ export default function Contact() {
     setError(null);
     setSuccess(false);
 
-    const { error } = await supabase
-      .from("leads")
-      .insert([
-        {
-          name: form.name,
-          last_name: form.last_name,
-          email: form.email,
-          phone: form.phone,
-          description: form.description,
+    try {
+      const { error: supabaseError } = await supabase
+        .from("leads")
+        .insert([
+          {
+            name: form.name,
+            last_name: form.last_name,
+            email: form.email,
+            phone: form.phone,
+            description: form.description,
+          },
+        ]);
+
+      if (supabaseError) {
+        throw new Error("Error al guardar los datos en la base de datos");
+      }
+
+      const requestBody = {
+        from: 'Expery Travel <onboarding@resend.dev>',
+        to: 'andres.palacio@utp.edu.co',
+        subject: 'Nuevo mensaje de contacto',
+        data: form,
+      };
+
+      const response = await fetch('/api/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      ]);
-
-    setLoading(false);
-
-    if (error) {
-      console.error("Error inserting data:", error);
-      setError("Hubo un error al enviar tus datos. Inténtalo de nuevo.");
-    } else {
-      setSuccess(true);
-      // Opcional: Limpiar el formulario después del envío
-      setForm({
-        name: "",
-        last_name: "",
-        email: "",
-        phone: "",
-        description: "",
+        body: JSON.stringify(requestBody),
       });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Error al enviar el email');
+      }
+
+      setSuccess(true);
+      setForm({
+        name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        description: '',
+      });
+
+    } catch (err) {
+      console.error("Error:", err);
+      setError(err instanceof Error ? err.message : 'Hubo un error al procesar tu solicitud. Inténtalo de nuevo.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,7 +84,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-expery-head mb-6 text-center lg:text-left">
+            <h2 className="text-4xl md:text-5xl font-bold text-expery-blue mb-6 text-center lg:text-left">
               Inicia tu viaje
             </h2>
             <p className="text-xl text-black mb-8 text-center lg:text-left">
@@ -160,13 +184,13 @@ export default function Contact() {
               ></textarea>
               <Button
                 type="submit"
-                className="w-full border border-solid border-white bg-transparent hover:border-none hover:bg-expery-regent text-white font-semibold py-3"
+                className="w-full border border-solid border-white bg-transparent hover:border-none hover:bg-expery-iron text-white font-semibold py-3"
                 disabled={loading}
               >
                 {loading ? "Enviando..." : "Enviar"}
               </Button>
               {success && (
-                <p className="text-green-500 mt-2">
+                <p className="text-white mt-2">
                   ¡Formulario enviado correctamente!
                 </p>
               )}

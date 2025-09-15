@@ -63,10 +63,11 @@ const config: Config = {
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
   			},
-			'expery-iron': '#DADADB',
-			'expery-regent': '#84949C',
-			'expery-blue': '#324b62',
-			'expery-head': '#344c63',
+			'expery-iron': '#8793a0',
+			'expery-blue': '#34495f',
+			'classic-gold': '#d4af37',
+			'elegant-beige': '#f5e6d3',
+			'chic-terracotta': '#a65e44',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

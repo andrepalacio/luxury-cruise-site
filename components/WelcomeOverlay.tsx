@@ -36,11 +36,11 @@ export default function WelcomeOverlay() {
             />
           </motion.div>
           <motion.h1
-            className="text-3xl md:text-5xl font-bold font-serif mt-6 text-center tracking-wide"
+            className="text-3xl md:text-5xl mt-8 text-center tracking-wide"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            style={{ fontFamily: "Noto Serif, serif" }}
+            style={{ fontFamily: "guthen bloots, serif" }}
           >
             El Arte de Viajar
           </motion.h1>

@@ -88,6 +88,14 @@
   }
 }
 
+@font-face {
+  font-family: 'guthen bloots';
+  src: url('/fonts/Guthen_Bloots_Personal_Use.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 html {
   scroll-behavior: smooth;
 }

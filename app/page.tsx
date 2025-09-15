@@ -63,19 +63,19 @@ export default function LuxuryCruiseSite() {
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#cruises"
-                className="text-expery-head hover:text-expery-regent transition-colors"
+                className="text-expery-blue hover:text-expery-iron transition-colors"
               >
                 Cruseros
               </a>
               <a
                 href="#services"
-                className="text-expery-head hover:text-expery-regent transition-colors"
+                className="text-expery-blue hover:text-expery-iron transition-colors"
               >
                 Servicios
               </a>
               <a
                 href="#contact"
-                className="text-expery-head hover:text-expery-regent transition-colors"
+                className="text-expery-blue hover:text-expery-iron transition-colors"
               >
                 Contacto
               </a>
@@ -115,7 +115,7 @@ export default function LuxuryCruiseSite() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-expery-blue hover:bg-expery-iron text-white hover:text-expery-head font-semibold px-8 py-4 text-lg transition-all duration-300 ease-in-out"
+                  className="bg-expery-blue hover:bg-expery-iron text-white hover:text-expery-blue font-semibold px-8 py-4 text-lg transition-all duration-300 ease-in-out"
                   onClick={() =>
                     window.scrollTo({
                       top: document.getElementById("cruises")?.offsetTop,
@@ -128,7 +128,7 @@ export default function LuxuryCruiseSite() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-white border-white hover:border-none hover:bg-white/90 hover:text-expery-head px-8 py-4 text-lg bg-transparent transition-all duration-300 ease-in-out"
+                  className="text-white border-white hover:border-none hover:bg-white/90 hover:text-expery-blue px-8 py-4 text-lg bg-transparent transition-all duration-300 ease-in-out"
                   onClick={() => window.open("/brochure.pdf", "_blank")}
                 >
                   Ver Brochure
@@ -153,7 +153,7 @@ export default function LuxuryCruiseSite() {
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-expery-head mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-expery-blue mb-6">
               Cruceros
             </h2>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
