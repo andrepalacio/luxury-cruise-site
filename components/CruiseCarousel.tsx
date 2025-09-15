@@ -29,7 +29,7 @@ const cruises = [
       destination: "Caribbean",
       highlights: ["Luxury Dining", "Spa", "Indoor Pool"],
     },
-    primaryImage: "/cruises/norwegian/encore.jpg",
+    primaryImage: "/cruises/norwegian/cruise.jpeg",
     hoverImages: [
       "/cruises/norwegian/room.webp",
       "/cruises/norwegian/pool.webp",
@@ -41,7 +41,7 @@ const cruises = [
       destination: "America",
       highlights: ["Exclusive Dining", "Suites", "Luxury Resturants"],
     },
-    primaryImage: "/cruises/oceania/riviera.jpg",
+    primaryImage: "/cruises/oceania/cruise.jpeg",
     hoverImages: [
       "/cruises/oceania/room.avif",
       "/cruises/oceania/restaurant.avif",
@@ -54,7 +54,7 @@ const cruises = [
       destination: "Mediterranean",
       highlights: ["Luxury service", "Spa", "Cultural Plays"],
     },
-    primaryImage: "/cruises/regent/cruise.jpg",
+    primaryImage: "/cruises/regent/cruise.jpeg",
     hoverImages: [
       "/cruises/regent/lobby.jpg",
       "/cruises/regent/restaurant.avif",
@@ -65,7 +65,7 @@ const cruises = [
 
 export default function CruiseCarousel() {
   return (
-    <div className="relative w-full h-[80vh]">
+    <div className="relative w-[90%] h-[80vh] mx-auto">
       <Swiper
         modules={[Autoplay]}
         slidesPerView={1}
@@ -112,7 +112,7 @@ function CruiseCard({
           setCurrentImage(hoverImages[next]);
           return next;
         });
-      }, 2000);
+      }, 2500);
     } else {
       setCurrentImage(primaryImage);
       setHoverIndex(0);
@@ -128,22 +128,20 @@ function CruiseCard({
   // Mobile tap handler
   const handleMobileInteraction = (e: React.MouseEvent | React.TouchEvent) => {
     if (!supportsHover) {
-      e.stopPropagation(); // Remove preventDefault to avoid passive listener error
-      // console.log("Mobile tap - toggling gallery"); // Debug log
+      e.stopPropagation();
       setIsHovered((prev) => {
-        // console.log("Gallery state changing from", prev, "to", !prev);
         return !prev;
       });
     }
   };
 
-  // Auto-hide on mobile after 8 seconds (with delay to prevent immediate hiding)
+  // Auto-hide on mobile after 7.5 seconds (with delay to prevent immediate hiding)
   useEffect(() => {
     if (!supportsHover && isHovered) {
       // Add a longer delay to ensure gallery has time to show
       const timeout = setTimeout(() => {
         setIsHovered(false);
-      }, 8000); // Increased to 8 seconds
+      }, 7500);
 
       return () => {
         clearTimeout(timeout);
@@ -200,7 +198,7 @@ function CruiseCard({
       )}
 
       {/* Cruise Information Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-blue-950/90 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-blue-950/90 to-transparent">
         <div className="max-w-2xl">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {name}

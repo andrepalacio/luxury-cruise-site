@@ -1,33 +1,59 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/lib/subapaseClient";
 
 export default function Contact() {
   const [form, setForm] = useState({
-    nombre: "",
-    apellido: "",
+    name: "",
+    last_name: "",
     email: "",
-    celular: "",
-    mensaje: "",
+    phone: "",
+    description: "",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  };
 
-  async function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setSuccess(false);
     setError(null);
+    setSuccess(false);
 
-    console.log(form);
-  }
+    const { error } = await supabase
+      .from("leads")
+      .insert([
+        {
+          name: form.name,
+          last_name: form.last_name,
+          email: form.email,
+          phone: form.phone,
+          description: form.description,
+        },
+      ]);
+
+    setLoading(false);
+
+    if (error) {
+      console.error("Error inserting data:", error);
+      setError("Hubo un error al enviar tus datos. Inténtalo de nuevo.");
+    } else {
+      setSuccess(true);
+      // Opcional: Limpiar el formulario después del envío
+      setForm({
+        name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        description: "",
+      });
+    }
+  };
 
   return (
     <section id="contact" className="py-20 bg-white/80">
@@ -91,19 +117,19 @@ export default function Contact() {
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-4">
                 <input
-                  name="nombre"
+                  name="name"
                   type="text"
                   placeholder="Nombre"
-                  value={form.nombre}
+                  value={form.name}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border rounded-lg placeholder-gray-300 focus:outline-none"
                 />
                 <input
-                  name="apellido"
+                  name="last_name"
                   type="text"
                   placeholder="Apellido"
-                  value={form.apellido}
+                  value={form.last_name}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg placeholder-gray-300 focus:outline-none"
@@ -119,19 +145,19 @@ export default function Contact() {
                 className="w-full px-4 py-3 rounded-lg placeholder-gray-300 focus:outline-none"
               />
               <input
-                name="celular"
+                name="phone"
                 type="tel"
                 placeholder="Celular"
-                value={form.celular}
+                value={form.phone}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-lg placeholder-gray-300 focus:outline-none"
               />
               <textarea
-                name="mensaje"
+                name="description"
                 placeholder="Cuéntanos sobre tu viaje soñado..."
                 rows={4}
-                value={form.mensaje}
+                value={form.description}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg placeholder-gray-300 focus:outline-none resize-none"
               ></textarea>
