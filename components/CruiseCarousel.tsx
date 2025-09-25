@@ -160,7 +160,7 @@ function CruiseCard({
     if (!supportsHover && isHovered) {
       const timeout = setTimeout(() => {
         setIsHovered(false);
-      }, 5000);
+      }, 6000);
 
       return () => {
         clearTimeout(timeout);

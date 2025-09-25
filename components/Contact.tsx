@@ -102,7 +102,7 @@ export default function Contact() {
                   <p className="text-gray-600 font-semibold">
                     +57 313 5828640
                   </p>
-                  <p className="text-black">Disponible 24/7</p>
+                  <p className="text-black">Estamos a tu servicio en todo momento.</p>
                 </div>
               </div>
 

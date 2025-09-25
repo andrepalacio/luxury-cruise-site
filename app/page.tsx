@@ -25,9 +25,9 @@ export default function LuxuryCruiseSite() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
-    '/beach.jpg',
-    '/beast.jpg',
+    '/fiodors.jpeg',
     '/abu dhabi.jpg',
+    '/beast.jpg',
     '/norwegian aqua.jpg',
   ];
 
