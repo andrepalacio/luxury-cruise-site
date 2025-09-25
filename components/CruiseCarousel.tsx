@@ -17,47 +17,74 @@ type ICruiseCardProps = {
   hoverImages: Array<string>;
 };
 
-const cruises = [
+const getCruises = (isMobile: boolean) => [
   {
     name: "Norwegian Cruise Line - Viva",
-    details: "Un santuario de comodidad contemporánea: suites, servicio The Haven con mayordomo 24 horas, lounges privados, gastronomía refinada y espacios exclusivos con vistas panorámicas",
-    primaryImage: "/cruises/norwegian/viva.jpg",
+    details:
+      "Un santuario moderno de refinamiento: suites diseñadas para el reposo total, servicio de mayordomo 24 horas, espacios privilegiados, gastronomía que despierta los sentidos y vistas panorámicas que confortan el alma",
+    primaryImage: isMobile
+      ? "/cruises/norwegian/viva-mobile.jpg"
+      : "/cruises/norwegian/viva.jpg",
     hoverImages: [
-      "/cruises/norwegian/hidropool.png",
-      "/cruises/norwegian/cocktails.png",
+      "/cruises/norwegian/yoga.jpg",
+      "/cruises/norwegian/cocktails.jpg",
     ],
   },
   {
     name: "Oceania Cruises",
-    details: "Estilo residencial y sofisticación en cada detalle: suites amplias con varanda privada, servicio de mayordomo, cenas especializadas, amenidades de lujo y un ambiente íntimo que respira distinción",
-    primaryImage: "/cruises/oceania/cruise.jpeg",
-    hoverImages: [    
-      "/cruises/oceania/restaurant.png",
-      "/cruises/oceania/pool.png",
+    details:
+      "Residencial en su esencia, sofisticado en cada matiz: balcones privados que se abren al horizonte, cenas curatoriales, amenidades de alta gama, y un ambiente íntimo que evoca elegancia",
+    primaryImage: isMobile
+      ? "/cruises/oceania/cruise-mobile.jpeg"
+      : "/cruises/oceania/cruise.jpeg",
+    hoverImages: [
+      "/cruises/oceania/restaurant.jpg",
+      "/cruises/oceania/pool.jpg",
     ],
   },
   {
-    name: "Norwegian Cruise Line",
-    details: "Un santuario de comodidad contemporánea: suites, servicio The Haven con mayordomo 24 horas, lounges privados, gastronomía refinada y espacios exclusivos con vistas panorámicas",
-    primaryImage: "/cruises/norwegian/luna.jpg",
+    name: "Norwegian Cruise Line - Privé",
+    details:
+      "Un enclave reservado que ofrece suites de lujo, mayordomo 24/7, espacios privados y embarque prioritario, excursiones diseñadas a medida y beneficios exclusivos que convierten cada itinerario en un viaje inolvidable",
+    primaryImage: isMobile
+      ? "/cruises/norwegian/luna-mobile.jpg"
+      : "/cruises/norwegian/luna.jpg",
     hoverImages: [
-      "/cruises/norwegian/restaurant.png",
-      "/cruises/norwegian/yoga.png",
+      "/cruises/norwegian/restaurant.jpg",
+      "/cruises/norwegian/hidropool.jpg",
     ],
   },
   {
     name: "Regent Seven Seas Cruises",
-    details: "Ultra lujo todo incluido que marca diferencia: suites majestuosas con vistas al mar, gastronomía gourmet sin cargos adicionales, experiencias terrestres ilimitadas, spa de ensueño y atención personalizada que supera expectativas",
-    primaryImage: "/cruises/regent/cruise.jpeg",
+    details:
+      "Ultra lujo todo incluido que redefine el estándar: suites majestuosas con panoramas marinos, propuestas culinarias gourmet sin cargos adicionales, experiencias terrestres exclusivas, spa de otra categoría y una atención personalizada que redefine expectativas",
+    primaryImage: isMobile
+      ? "/cruises/regent/cruise-mobile.jpeg"
+      : "/cruises/regent/cruise.jpeg",
     hoverImages: [
       "/cruises/regent/lobby.jpg",
-      "/cruises/regent/restaurant.avif",
-      "/cruises/regent/spa.jpg",
+      "/cruises/regent/restaurant.jpg",
+      // "/cruises/regent/spa.jpg",
     ],
   },
 ];
 
+function useCruises() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  return getCruises(isMobile);
+}
+
+
 export default function CruiseCarousel() {
+  const cruises = useCruises();
   return (
     <div className="relative w-full h-[85vh] mx-auto">
       <Swiper
@@ -65,7 +92,7 @@ export default function CruiseCarousel() {
         slidesPerView={1}
         loop
         autoplay={{
-          delay: 8000,
+          delay: 6000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
@@ -133,7 +160,7 @@ function CruiseCard({
     if (!supportsHover && isHovered) {
       const timeout = setTimeout(() => {
         setIsHovered(false);
-      }, 7500);
+      }, 5000);
 
       return () => {
         clearTimeout(timeout);
