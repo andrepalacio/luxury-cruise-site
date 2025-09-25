@@ -24,12 +24,30 @@ export default function LuxuryCruiseSite() {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const images = [
+  const desktopImages = [
     '/fiodors.jpeg',
     '/abu dhabi.jpg',
-    '/beast.jpg',
-    '/norwegian aqua.jpg',
+    '/food.jpeg',
+    '/pagoda.jpeg',
   ];
+
+  const mobileImages = [
+    '/fiodors.jpeg',
+    '/abu dhabi.jpg',
+    '/food-mobile.jpeg',
+    '/pagoda-mobile.jpeg',
+  ];
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const images = isMobile ? mobileImages : desktopImages;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -109,7 +127,7 @@ export default function LuxuryCruiseSite() {
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <div className="max-w-4xl mx-auto">
             <div className="animate-fade-in-up">
-              <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
                 Expertos en experiencias
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
