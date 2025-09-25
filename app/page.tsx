@@ -25,10 +25,10 @@ export default function LuxuryCruiseSite() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
-    '/beach.jpeg',
-    '/food.jpeg',
-    '/turkey.jpeg',
-    '/art.jpeg',
+    '/beach.jpg',
+    '/beast.jpg',
+    '/abu dhabi.jpg',
+    '/norwegian aqua.jpg',
   ];
 
   useEffect(() => {
@@ -56,8 +56,8 @@ export default function LuxuryCruiseSite() {
                 src="/logos/expery_original.png"
                 alt="Expery Travel Logo"
                 className="rounded mx-2"
-                width={120}
-                height={80}
+                width={180}
+                height={100}
               />
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -110,12 +110,12 @@ export default function LuxuryCruiseSite() {
           <div className="max-w-4xl mx-auto">
             <div className="animate-fade-in-up">
               <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                Cultura y Arte al Viajar
+                Expertos en experiencias
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-expery-blue hover:bg-expery-iron text-white hover:text-expery-blue font-semibold px-8 py-4 text-lg transition-all duration-300 ease-in-out"
+                  className="bg-expery-blue hover:bg-classic-gold text-white font-semibold px-8 py-4 text-lg transition-all duration-300 ease-in-out"
                   onClick={() =>
                     window.scrollTo({
                       top: document.getElementById("cruises")?.offsetTop,
@@ -151,13 +151,13 @@ export default function LuxuryCruiseSite() {
         id="cruises"
         className="py-20 bg-white/80 relative overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-full mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-expery-blue mb-6">
               Cruceros
             </h2>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-              Cada viaje es diseñado con precisión para ofrecer lo extraordinario: lujo, servicio excepcional y experiencias mágicas
+              Cada itinerario se concibe con exactitud y pasión para entregar lo extraordinario: lujo, servicio impecable y momentos que trascienden la rutina.
             </p>
           </div>
 
@@ -173,7 +173,7 @@ export default function LuxuryCruiseSite() {
               Experiencias
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Brindamos experiencias diseñadas con elegancia, exclusividad y una minuciosa atención al detalle, para quienes viven el viaje como parte de su legado
+              Creamos vivencias pensadas para quienes consideran el viaje no solo como destino, sino como legado. Elegancia, exclusividad y detalle en cada paso.
             </p>
           </div>
 

@@ -19,22 +19,30 @@ type ICruiseCardProps = {
 
 const cruises = [
   {
-    name: "Norwegian Cruise Line",
+    name: "Norwegian Cruise Line - Viva",
     details: "Un santuario de comodidad contemporánea: suites, servicio The Haven con mayordomo 24 horas, lounges privados, gastronomía refinada y espacios exclusivos con vistas panorámicas",
-    primaryImage: "/cruises/norwegian/cruise.jpeg",
+    primaryImage: "/cruises/norwegian/viva.jpg",
     hoverImages: [
-      "/cruises/norwegian/room.webp",
-      "/cruises/norwegian/pool.webp",
+      "/cruises/norwegian/hidropool.png",
+      "/cruises/norwegian/cocktails.png",
     ],
   },
   {
     name: "Oceania Cruises",
     details: "Estilo residencial y sofisticación en cada detalle: suites amplias con varanda privada, servicio de mayordomo, cenas especializadas, amenidades de lujo y un ambiente íntimo que respira distinción",
     primaryImage: "/cruises/oceania/cruise.jpeg",
+    hoverImages: [    
+      "/cruises/oceania/restaurant.png",
+      "/cruises/oceania/pool.png",
+    ],
+  },
+  {
+    name: "Norwegian Cruise Line",
+    details: "Un santuario de comodidad contemporánea: suites, servicio The Haven con mayordomo 24 horas, lounges privados, gastronomía refinada y espacios exclusivos con vistas panorámicas",
+    primaryImage: "/cruises/norwegian/luna.jpg",
     hoverImages: [
-      "/cruises/oceania/room.avif",
-      "/cruises/oceania/restaurant.avif",
-      "/cruises/oceania/pool.avif",
+      "/cruises/norwegian/restaurant.png",
+      "/cruises/norwegian/yoga.png",
     ],
   },
   {
@@ -51,7 +59,7 @@ const cruises = [
 
 export default function CruiseCarousel() {
   return (
-    <div className="relative w-[90%] h-[80vh] mx-auto">
+    <div className="relative w-full h-[85vh] mx-auto">
       <Swiper
         modules={[Autoplay]}
         slidesPerView={1}
@@ -135,7 +143,7 @@ function CruiseCard({
 
   return (
     <div
-      className="relative w-full h-full overflow-hidden rounded-2xl shadow-lg group"
+      className="relative w-full h-full overflow-hidden rounded shadow-lg group"
       // Desktop hover events (only if device supports hover)
       {...(supportsHover && {
         onMouseEnter: () => {
@@ -180,7 +188,7 @@ function CruiseCard({
 
       {/* Cruise Information Overlay */}
       <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-blue-950/90 to-transparent">
-        <div className="max-w-[85%]">
+        <div className="max-w-full">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {name}
           </h3>

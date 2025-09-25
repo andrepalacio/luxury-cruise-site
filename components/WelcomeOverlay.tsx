@@ -30,8 +30,8 @@ export default function WelcomeOverlay() {
             <Image
               src="/logos/expery_vertical.png"
               alt="Company Logo"
-              width={200}
-              height={200}
+              width={300}
+              height={300}
               priority
             />
           </motion.div>

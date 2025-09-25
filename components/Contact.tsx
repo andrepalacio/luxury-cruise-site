@@ -44,7 +44,7 @@ export default function Contact() {
 
       const requestBody = {
         from: 'Expery Travel <onboarding@resend.dev>',
-        to: 'andres.palacio@utp.edu.co',
+        to: process.env.NEXT_PUBLIC_ADMIN_EMAIL!,
         subject: 'Nuevo mensaje de contacto',
         data: form,
       };
@@ -88,7 +88,7 @@ export default function Contact() {
               Inicia tu viaje
             </h2>
             <p className="text-xl text-black mb-8 text-center lg:text-left">
-              En ExperyTravel creemos que el verdadero lujo reside en la intención, la precisión y el servicio personalizado. Nos dirigimos a personas que buscan no solo viajes, sino experiencias hechas a su medida.
+              En ExperyTravel entendemos que el máximo lujo emerge de la intención consciente, la precisión impecable y un servicio verdaderamente personalizado. Nos dirigimos a quienes desean más que viajes: anhelan experiencias con significado.
             </p>
             <div className="space-y-6">
               <div className="flex items-center">
@@ -112,21 +112,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-gray-600 font-semibold">
-                    contactanos@experytravel.com
+                    contacto@experytravel.com
                   </p>
                   <p className="text-black">Contacto Expery Travel</p>
-                </div>
-              </div>
-
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-expery-blue rounded-full flex items-center justify-center mr-4">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="text-gray-600 font-semibold">
-                    Calle 25 #6-66, Pereira, Risaralda, Colombia
-                  </p>
-                  <p className="text-black">Oficinas</p>
                 </div>
               </div>
             </div>
@@ -184,7 +172,7 @@ export default function Contact() {
               ></textarea>
               <Button
                 type="submit"
-                className="w-full border border-solid border-white bg-transparent hover:border-none hover:bg-expery-iron text-white font-semibold py-3"
+                className="w-full border border-solid border-white bg-transparent hover:border-none hover:bg-classic-gold text-white font-semibold py-3"
                 disabled={loading}
               >
                 {loading ? "Enviando..." : "Enviar"}
@@ -194,7 +182,7 @@ export default function Contact() {
                   ¡Formulario enviado correctamente!
                 </p>
               )}
-              {error && <p className="text-red-500 mt-2">{error}</p>}
+              {error && <p className="text-chic-terracotta mt-2">{error}</p>}
             </form>
           </div>
         </div>

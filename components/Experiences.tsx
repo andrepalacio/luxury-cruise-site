@@ -6,12 +6,17 @@ export default function Experiences() {
     {
       title: "Turismo cultural",
       description: "Sumérjase en culturas milenarias, descubra sabores auténticos y paisajes que evocan historias",
-      image: "/cultural.jpg",
+      image: "/art.jpeg",
     },
     {
       title: "Destinos mágicos",
       description: "Visite destinos emblemáticos y refugios escondidos, cada viaje será una colección de momentos sublimes",
       image: "/magicland.jpeg",
+    },
+    {
+      title: "Gastronomía premium",
+      description: "Experimente la alta cocina con chefs de renombre mundial en escenarios impresionantes",
+      image: "/greece gastronomy.jpg",
     },
     {
       title: "Turismo corporativo",
@@ -21,17 +26,17 @@ export default function Experiences() {
   ];
 
   return (
-    <div className="grid md:grid-cols-3 gap-8">
+    <div className="grid md:grid-cols-2 gap-8">
       {services.map((service, index) => (
         <div key={index} className="group cursor-pointer">
-          <div className="relative h-64 mb-6 overflow-hidden rounded-lg">
+          <div className="relative h-72 mb-6 overflow-hidden rounded-lg">
             <Image
               src={service.image || "/placeholder.svg"}
               alt={service.title}
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-300"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/50 to-transparent"></div>
             <div className="absolute bottom-4 left-4 right-4">
               <h3 className="text-xl font-bold text-white mb-2">
                 {service.title}

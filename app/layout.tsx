@@ -6,10 +6,10 @@ import WelcomeOverlay from '@/components/WelcomeOverlay';
 const notoSerif = Noto_Serif({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
-  title: 'Expery Travel - Cruceros de Lujo y Experiencias Exclusivas',
+  title: 'Expery Travel',
   description: 'Explora el lujo de viajar con Expery Travel: cruceros exclusivos, destinos de ensueño y experiencias personalizadas.',
   openGraph: {
-    title: 'Expery Travel - Cruceros de Lujo',
+    title: 'Expery Travel - El arte de viajar',
     description: 'Descubre cruceros exclusivos y experiencias personalizadas con Expery Travel.',
     url: 'https://experytravel.com',
     siteName: 'Expery Travel',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Expery Travel - Cruceros de Lujo',
+    title: 'Expery Travel - El arte de viajar',
     description: 'Descubre cruceros exclusivos y experiencias personalizadas.',
     site: '@experytravel',
     images: ['https://experytravel.com/twitter-image.jpg']
