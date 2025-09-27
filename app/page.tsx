@@ -83,7 +83,7 @@ export default function LuxuryCruiseSite() {
                 href="#cruises"
                 className="text-expery-blue hover:text-expery-iron transition-colors"
               >
-                Cruseros
+                Cruceros
               </a>
               <a
                 href="#services"

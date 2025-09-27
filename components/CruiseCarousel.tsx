@@ -20,8 +20,9 @@ type ICruiseCardProps = {
 const getCruises = (isMobile: boolean) => [
   {
     name: "Norwegian Cruise Line - Viva",
-    details:
-      "Un santuario moderno de refinamiento: suites diseñadas para el reposo total, servicio de mayordomo 24 horas, espacios privilegiados, gastronomía que despierta los sentidos y vistas panorámicas que confortan el alma",
+    details: isMobile
+      ? "Un santuario moderno de refinamiento"
+      : "Un santuario moderno de refinamiento: suites diseñadas para el reposo total, servicio de mayordomo 24 horas, espacios privilegiados, gastronomía que despierta los sentidos y vistas panorámicas que confortan el alma",
     primaryImage: isMobile
       ? "/cruises/norwegian/viva-mobile.jpg"
       : "/cruises/norwegian/viva.jpg",
@@ -32,8 +33,9 @@ const getCruises = (isMobile: boolean) => [
   },
   {
     name: "Oceania Cruises",
-    details:
-      "Residencial en su esencia, sofisticado en cada matiz: balcones privados que se abren al horizonte, cenas curatoriales, amenidades de alta gama, y un ambiente íntimo que evoca elegancia",
+    details: isMobile
+      ? "Residencial en su esencia, sofisticado en cada matiz"
+      : "Residencial en su esencia, sofisticado en cada matiz: balcones privados que se abren al horizonte, cenas curatoriales, amenidades de alta gama, y un ambiente íntimo que evoca elegancia",
     primaryImage: isMobile
       ? "/cruises/oceania/cruise-mobile.jpeg"
       : "/cruises/oceania/cruise.jpeg",
@@ -44,8 +46,9 @@ const getCruises = (isMobile: boolean) => [
   },
   {
     name: "Norwegian Cruise Line - Privé",
-    details:
-      "Un enclave reservado que ofrece suites de lujo, mayordomo 24/7, espacios privados y embarque prioritario, excursiones diseñadas a medida y beneficios exclusivos que convierten cada itinerario en un viaje inolvidable",
+    details: isMobile
+      ? "Un enclave reservado que ofrece suites de lujo"
+      : "Un enclave reservado que ofrece suites de lujo, mayordomo 24/7, espacios privados y embarque prioritario, excursiones diseñadas a medida y beneficios exclusivos que convierten cada itinerario en un viaje inolvidable",
     primaryImage: isMobile
       ? "/cruises/norwegian/luna-mobile.jpg"
       : "/cruises/norwegian/luna.jpg",
@@ -56,8 +59,9 @@ const getCruises = (isMobile: boolean) => [
   },
   {
     name: "Regent Seven Seas Cruises",
-    details:
-      "Ultra lujo todo incluido que redefine el estándar: suites majestuosas con panoramas marinos, propuestas culinarias gourmet sin cargos adicionales, experiencias terrestres exclusivas, spa de otra categoría y una atención personalizada que redefine expectativas",
+    details: isMobile
+      ? "Ultra lujo todo incluido que redefine el estándar"
+      : "Ultra lujo todo incluido que redefine el estándar: suites majestuosas con panoramas marinos, propuestas culinarias gourmet sin cargos adicionales, experiencias terrestres exclusivas, spa de otra categoría y una atención personalizada que redefine expectativas",
     primaryImage: isMobile
       ? "/cruises/regent/cruise-mobile.jpeg"
       : "/cruises/regent/cruise.jpeg",
